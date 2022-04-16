@@ -18,7 +18,7 @@
             require 'db/db.php';
             $query = "INSERT INTO appointments (creator, appName, description, date) values (?, ?, ?, ?);";
             $statement = $conn->prepare($query);
-            if (!$statement->bind_param("ssss")){
+            if (!$statement->bind_param("ssss", $creatorName, $appointName, $description, $appDate)){
                 echo "Binding not working.";
             }
             if (!$statement->execute()) {
