@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Apr 2022 um 16:20
--- Server-Version: 10.4.21-MariaDB
--- PHP-Version: 8.0.12
+-- Erstellungszeit: 16. Apr 2022 um 16:22
+-- Server-Version: 10.4.22-MariaDB
+-- PHP-Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointments` (
-  `date` datetime NOT NULL,
   `id` int(11) NOT NULL,
-  `name` text NOT NULL
+  `creator` varchar(100) NOT NULL,
+  `appName` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `creator`, `appName`, `description`, `date`) VALUES
+(1, 'Jana Haider', 'Getting my nails done', 'It is what it is.', '2022-04-20');
 
 -- --------------------------------------------------------
 
@@ -69,7 +78,7 @@ ALTER TABLE `meeting`
 -- AUTO_INCREMENT für Tabelle `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `meeting`
