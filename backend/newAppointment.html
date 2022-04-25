@@ -27,11 +27,14 @@
         <label for="appointName">Appointment name:</label></br>
         <input type="text" id="appointName" name="appointName" placeholder="Appointment name" required /></br>
 
+        <label for="location">Appointment's location:</label></br>
+        <input type="text" id="location" name="location" placeholder="Vienna" required /></br>
+
         <label for="description">Description:</label></br>
         <textarea id="description" name="description" placeholder="Type your description (optional)..."></textarea></br>
         
         <label for="appDate">Date:</label></br>
-        <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31"></br> <!--Min als heutige Datum anlegen-->
+        <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31T23:59:59"></br> <!--Min als heutige Datum anlegen-->
 
         <input type="submit" name="newAppointment" id="newAppointment" value="Create the appointment" /></br>
     </div>

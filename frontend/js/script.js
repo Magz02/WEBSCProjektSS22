@@ -1,4 +1,4 @@
-let addSuccess = ""
+let appointments = [];
 
 $(() => {
     fetchAppointments();
@@ -11,8 +11,16 @@ function fetchAppointments() {
     $.ajax({
         type: "GET",
         url: "../backend/dataHandler.php",
-        data: 
-    })
+        cache: false,
+        dataType: "json",
+        success: function (response) {
+            appointments = response;
+            appointments.forEach(createTable);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
 }
 
 function addAppointment() {
@@ -22,6 +30,7 @@ function addAppointment() {
 
     const json = {
         "creator": $("#creatorName").val(),
+        "location": $("#location").val(),
         "appName": $("#appointName").val(),
         "description": $("#description").val(),
         "date": date
@@ -50,3 +59,29 @@ function deleteAppointment() {
 
     });
 }
+
+function createTable(appointment) {
+    let table = $("#table"); 
+    let div = $("<div class='appointment' />");
+    div.append("<h1>" + appointment.appName + "</h1>");
+    div.append("<h3>Creator: " + appointment.creator + "</h3>");
+    div.append("<h3>Location: " + appointment.location + "</h3>");
+    div.append("<p>Description: " + appointment.description + "</p>");
+    div.append("<p>Date (to be changed to choosing dates): </br>" + appointment.date + "</p>")
+    let today = new Date().toISOString().split('T')[0];
+    if (appointment.date < today) {
+        div.append("<p style='color: red'>This appointment has already expired!</p>");
+    }
+    table.append(div);
+    console.log(appointment.appName);
+}
+
+function setMinimum() {
+    //source: https://www.demo2s.com/javascript/javascript-input-datetime-local-set-min-date-to-today.html
+    let dateTime = document.getElementById("appDate").value;
+    let today = new Date().toISOString().split('T')[0];
+    today = today + "T00:00:00"
+    document.getElementById("appDate").setAttribute('min', today);
+}
+
+setMinimum();
