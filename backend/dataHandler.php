@@ -14,7 +14,7 @@ if ($method === 'GET') { //table creation
     http_response_code(200);
     header('Content-Type: application/json');
     echo json_encode($appointments);
-    //zapisz wyniki do tabelki z jsona
+
 } else if ($method === 'POST') { //add new one
     $jsonObj = json_decode(file_get_contents('php://input'));
 
@@ -28,5 +28,7 @@ if ($method === 'GET') { //table creation
     $statement = $conn->prepare($query);
     $statement->bind_param("sssss", $creator, $location, $appName, $description, $date);
     $statement->execute();
+} else if ($methid === 'DELETE') { //delete one entry
+
 }
 ?>
