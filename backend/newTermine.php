@@ -14,12 +14,11 @@
         if(isset($_POST['createT'])) {
                     $appointName = $_POST['appointName'];
                     $appDate = date($_POST['appDate']);
-                    $appTime = $_POST['appTime'];
 
                     require 'db/db.php';
-                    $query = "INSERT INTO availdates (appName, date, time) values (?, ?, ?);";
+                    $query = "INSERT INTO availdates (appName, date) values (?, ?);";
                     $statement = $conn->prepare($query);
-                    if (!$statement->bind_param("sss",$appointName, $appDate, $appTime)){
+                    if (!$statement->bind_param("ss",$appointName, $appDate)){
                         echo "Binding not working.";
                     }
                     if (!$statement->execute()) {
@@ -45,10 +44,7 @@
                 <input type="text" id="appointName" name="appointName" placeholder="Appointment name" required /></br>
 
                 <label for="appDate">Date:</label></br>
-                <input type="date" id="appDate" name="appDate" max="2030-12-31"></br><!--Min als heutige Datum anlegen-->
-
-                <label for="appTime">Time:</label></br>
-                <input type="time" id="appTime" name="appTime"><br>
+                <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31"></br><!--Min als heutige Datum anlegen-->
                 
                 <input type="submit" name="createT" value="add the date" /></br>
                 <?php

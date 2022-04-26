@@ -18,7 +18,6 @@
             $appointName = $_POST['appointName'];
             $description = $_POST['description'];
             $appDate = date($_POST['appDate']);
-            $appTime = $_POST['appTime'];
 
             require 'db/db.php';
             $query = "INSERT INTO appointments (creator, location, appName, description) values (?,?, ?, ?);";
@@ -30,9 +29,9 @@
                 $error = "The Appointment could not be created. Try again!";
             }
 
-            $query = "INSERT INTO availdates (appName, date, time) values (?, ?, ?);";
+            $query = "INSERT INTO availdates (appName, date) values (?, ?);";
                     $statement = $conn->prepare($query);
-                    if (!$statement->bind_param("sss",$appointName, $appDate, $appTime)){
+                    if (!$statement->bind_param("ss",$appointName, $appDate)){
                         echo "Binding not working.";
                     }
                     if (!$statement->execute()) {
@@ -66,10 +65,7 @@
                 <textarea id="description" name="description" placeholder="Type your description (optional)..."></textarea></br>
 
                 <label for="appDate">Date:</label></br>
-                <input type="date" id="appDate" name="appDate" max="2030-12-31"></br><!--Min als heutige Datum anlegen-->
-
-                <label for="appTime">Time:</label></br>
-                <input type="time" id="appTime" name="appTime"><br>
+                <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31"></br><!--Min als heutige Datum anlegen-->
 
                 <input type="submit" name="create" value="Create the appointment" /></br>
                 <?php
