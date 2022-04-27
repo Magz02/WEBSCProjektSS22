@@ -1,0 +1,37 @@
+html {
+    overflow-x: auto;
+}
+
+body {
+    background: linear-gradient(to right, #ccff33 0%, #66ccff 100%);
+}
+
+.appointment {
+   background-color: black;
+   color: white;
+   margin-bottom: 20px; 
+}
+
+.warning {
+    color: red;
+}
+
+.details {
+    background-color: darkslategray;
+    color: white;
+}
+
+#table {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#userWindow {
+    margin-top: 80px;   
+}
+
+@media screen and (max-width: 768px) {
+    #userWindow {
+        margin-top: 100px;
+    }
+}
