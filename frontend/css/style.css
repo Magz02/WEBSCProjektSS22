@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: linear-gradient(to top right, #ccff33 0%, #66ccff 100%);
+    background: linear-gradient(to right, #ccff33 0%, #66ccff 100%);
 }
 
 .appointment {
