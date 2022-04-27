@@ -36,9 +36,12 @@
 
         <div id="dates">
             <label for="appDate">Date (max 5 dates):</label></br>
-            <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31T23:59:59"> <!--Min als heutige Datum anlegen-->
+            <input type="datetime-local" id="appDate" name="appDate" max="2030-12-31T23:59:59"><br> <!--Min als heutige Datum anlegen-->
+        </div>
 
-            <button onclick="more()">+</button><br>
+        <div id="toomanybtns">
+            <button onclick="more()" id="btnMore">+</button>
+            <button onclick="less()" id="btnLess" disabled>-</button>
         </div>
 
         <input type="submit" name="newAppointment" id="newAppointment" value="Create the appointment" /></br>

@@ -1,4 +1,5 @@
 let appointments = [];
+let dates = [];
 
 $(() => {
     $("#newAppointment").on("click", addAppointment);
@@ -58,6 +59,15 @@ function deleteAppointment() {
 
     });
 }
+
+//function for the dates to get them in the database
+//but idk howwwwww, ding will, dass i einen scheiss beistrich mach...tf?
+/*function addDates() {
+    newDate = new Date($("#appDate").val());
+    dates.forEach(addAppointment() {
+        "newDate" : newDate,
+    });
+}*/
 
 function addComment(id) {
 
@@ -155,15 +165,41 @@ function hideComs(id) {
     $("#hideShowComs" + id).attr("onclick","showComs(" + id + ")");
 }
 
+let datum = 1;
+
 function more() {
-    let anotherDate = $("<input type='datetime-local' id='appDate' name='appDate' max='2030-12-31T23:59:59' />");
-    let btnMore = "<button onclick='more()'>+</button>";
-    let btnLess = "<button onclick='less()'>-</button><br>";
-    $("#dates").append(anotherDate);
-    $("#dates").append(btnMore);
-    $("#dates").append(btnLess);
+    let anotherDate = $("<input type='datetime-local' id='appDate' name='appDate' max='2030-12-31T23:59:59' /><br>");
+
+    if(datum == 1){
+        $("#dates").append(anotherDate);
+        datum++;
+        $('#btnLess').prop('disabled', false);
+    } 
+    else if(datum == 2){
+        $("#dates").append(anotherDate);
+        datum++;
+    }
+    else if(datum == 3){
+        $("#dates").append(anotherDate);
+        datum++;
+    }
+    else if(datum == 4){
+        $("#dates").append(anotherDate);
+        datum++;
+    }
+    else if(datum == 5){
+        $("#dates").append(anotherDate);
+        $("#btnMore").prop('disabled', true);
+    }
 }
 
 function less() {
-
+    $("#appDate").remove();
+    datum--;
+    if(datum < 5){
+        $("#btnMore").prop('disabled', false);
+        if(datum < 2){
+            $(btnLess).prop('disabled', true);
+        }
+    }
 }

@@ -28,7 +28,22 @@ if ($method === 'GET') { //table creation
     $statement = $conn->prepare($query);
     $statement->bind_param("sssss", $creator, $location, $appName, $description, $date);
     $statement->execute();
-} else if ($methid === 'DELETE') { //delete one entry
+
+    //to get the app_id so u know which dates belong to which appointment(did i write which wrong? looks wrong lol)
+    $queryery = "SELECT id FROM appointments WHERE appName = ?;";
+    $statement = $conn->prepare($query);
+    $statement->bind_param("s", $appName);
+    $statement->execute();
+    $result = $statement->get_result();
+    $row = mysqli_fetch_array($result);
+    $appId = $row['id'];
+
+    //the dates all get put into another table(with app_id?)
+    $query = "INSERT INTO availdates (app_id,date) values (?);";
+    $statement = $conn->prepare($query);
+    $statement->bind_param("is",$appId, $date);
+    $statement->execute();
+} else if ($method === 'DELETE') { //delete one entry
 
 }
 ?>
