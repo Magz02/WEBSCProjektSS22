@@ -3,7 +3,7 @@ Online Repository für Web Scripting Projekt für Maksymilian Ormianin und Jana 
 
 ## Grundidee
 
-Die Idee für Projekt ist eine Webseite zu entwickeln wo es möglich ist einen Termin auszuwählen bzw. auszusuchen.
+Die Idee für Projekt ist eine Webseite zu entwickeln wo es möglich ist einen Termin auszusuchen.
 
 ## Materialien benutzt für das Projekt
 
